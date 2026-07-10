@@ -1,79 +1,210 @@
-# ALPA
-## AI Learning & Progress Assistant
+# 🚀 ALPA — AI Personal Learning Assistant
 
-ALPA is a personal learning assistant built with Python to track learning activities, manage projects, store ideas, and analyze personal progress.
+**Version: v0.4.0**
 
-The goal of ALPA is to create a simple system that helps learners organize their growth, monitor consistency, and receive insights based on their learning patterns.
+ALPA (AI Personal Learning Assistant) is a Python-based productivity system designed to track learning activities, manage ideas and projects, and provide intelligent insights based on personal learning data.
+
+The goal of ALPA is to transform raw learning records into meaningful analysis and actionable recommendations.
 
 ---
 
-## 🚀 Current Features
+## ✨ Features
 
 ### 📚 Learning Activity Tracker
-- Add learning activities
-- Record category, duration, notes, and rating
-- View learning history
+
+* Record daily learning activities
+* Track category, duration, notes, and rating
+* Store learning history using SQLite database
+* Validate user input before saving data
+
+---
 
 ### 💡 Idea Vault
-- Store project ideas
-- Track idea priority and status
+
+Manage and organize ideas with:
+
+* Title
+* Description
+* Priority
+* Status
+
+---
 
 ### 🚀 Project Tracker
-- Manage ongoing projects
-- Track progress percentage
-- Record next action steps
 
-### 📊 Learning Analyzer
-- Analyze total learning sessions
-- Calculate learning time
-- Identify active learning categories
+Track ongoing projects with:
 
-### 🧠 Insight Engine
-- Generate simple learning insights based on recorded activities
+* Project name
+* Description
+* Status
+* Progress percentage
+* Next action
 
 ---
 
-## 🏗️ Project Architecture
+# 🧠 Intelligence Layer (v0.4.0)
+
+ALPA now includes an intelligence system that analyzes learning behavior.
+
+## Daily Analysis
+
+Provides:
+
+* Today's learning sessions
+* Total learning time
+* Activity summary
+
+Example:
+
+```
+Today's Sessions: 3
+Today's Learning Time: 180 minutes
+```
 
 ---
 
-## 🛠️ Technologies Used
+## Weekly Performance Analysis
 
-- Python
-- SQLite
-- Pandas
+Analyzes recent learning patterns:
 
----
+* 7-day activity tracking
+* Weekly average learning time
+* Performance comparison
 
-## 🎯 Future Roadmap
+Example:
 
-### Version 0.3
-- Input validation
-- Better error handling
-- Improved insight generation
-
-### Version 0.4
-- Goal tracker
-- Skill progress tracking
-- Learning roadmap
-
-### Version 0.5
-- AI-powered recommendations
-- Smart learning suggestions
-- Personal growth dashboard
+```
+7-Day Sessions: 4
+Weekly Average: 34.3 minutes
+Status: Above Average 🚀
+```
 
 ---
 
-## 💡 Motivation
+## Insight Generator
 
-ALPA was created as a personal tool to organize learning progress, manage projects, and reduce the problem of losing ideas and forgetting important tasks.
+Converts data into meaningful observations.
 
-The project is continuously improved while learning software development concepts.
+Example:
+
+```
+Strong learning momentum today.
+```
 
 ---
 
-## 📌 Current Status
+## Recommendation Engine
 
-🚧 Active Development
+Uses project data to suggest the next focus area.
 
-Version: 0.2
+Example:
+
+```
+Focus on: Dota 2 Match Analyzer
+
+Next Action:
+Complete CRUD
+```
+
+---
+
+# 🏗️ Project Architecture
+
+```
+AI-Learning-Assistant
+
+│
+├── main.py
+│
+├── database.py
+│
+├── models
+│   ├── activity.py
+│   ├── idea.py
+│   └── project.py
+│
+├── menus
+│   ├── activity_menu.py
+│   ├── idea_menu.py
+│   └── project_menu.py
+│
+├── services
+│   ├── analyzer.py
+│   └── intelligence.py
+│
+└── learning.db
+```
+
+---
+
+# 🛠️ Technologies Used
+
+* Python
+* SQLite
+* Pandas
+* Git & GitHub
+
+---
+
+# ▶️ How To Run
+
+Clone repository:
+
+```bash
+git clone https://github.com/ubaidillah1996/alpa.git
+```
+
+Navigate into project:
+
+```bash
+cd alpa
+```
+
+Run application:
+
+```bash
+python main.py
+```
+
+---
+
+# 📌 Development Roadmap
+
+## Completed
+
+✅ Activity Tracker
+✅ Idea Management
+✅ Project Tracker
+✅ Database Integration
+✅ Input Validation
+✅ Learning Analytics
+✅ Intelligence Layer v0.4.0
+
+---
+
+## Future Improvements
+
+### v0.5 — Smart Decision Layer
+
+Planned features:
+
+* Productivity scoring
+* Project priority ranking
+* Learning streak tracking
+* Smarter recommendations
+* Improved decision support
+
+---
+
+# 👨‍💻 Author
+
+Built as a continuous learning project while exploring:
+
+* Python development
+* Software architecture
+* Data analysis
+* AI-assisted programming
+
+---
+
+⭐ ALPA is continuously evolving from a simple tracker into a personal AI learning companion.
