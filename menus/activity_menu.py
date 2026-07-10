@@ -3,15 +3,22 @@ from database import (
     insert_activity,
     get_activities
 )
-
+from services.validator import get_valid_number
 
 def add_activity():
 
     activity = input("Activity: ")
     category = input("Category: ")
-    duration = int(input("Duration (minutes): "))
+    duration = get_valid_number(
+    "Duration (minutes): ",
+    1
+)
     notes = input("Notes: ")
-    rating = int(input("Rating (1-5): "))
+    rating = get_valid_number(
+    "Rating (1-5): ",
+    1,
+    5
+)
 
 
     new_activity = Activity(

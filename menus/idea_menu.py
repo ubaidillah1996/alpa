@@ -3,13 +3,30 @@ from database import (
     insert_idea,
     get_ideas
 )
+from services.validator import get_valid_choice
+
 
 def add_idea():
 
     title = input("Idea Title: ")
     description = input("Description: ")
-    priority = input("Priority: ")
-    status = input("Status: ")
+    priority = get_valid_choice(
+    "Priority: ",
+    [
+        "High",
+        "Medium",
+        "Low"
+    ]
+)
+    status = get_valid_choice(
+    "Status: ",
+    [
+        "Future",
+        "Planning",
+        "Active",
+        "Completed"
+    ]
+)
 
 
     new_idea = Idea(

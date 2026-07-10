@@ -1,13 +1,18 @@
 
 from models.project import Project
 from database import insert_project, get_projects
+from services.validator import get_valid_number
 
 def add_project():
 
     name = input("Project Name: ")
     description = input("Description: ")
     status = input("Status: ")
-    progress = int(input("Progress (%): "))
+    progress = get_valid_number(
+    "Progress (%): ",
+    0,
+    100
+)
     next_action = input("Next Action: ")
 
 
