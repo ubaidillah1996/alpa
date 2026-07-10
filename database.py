@@ -116,26 +116,38 @@ def insert_idea(idea):
 
     connection = create_connection()
 
-    cursor = connection.cursor()
+    try:
+
+        cursor = connection.cursor()
 
 
-    cursor.execute("""
-    INSERT INTO ideas
-    (title, description, priority, status)
+        cursor.execute("""
+        INSERT INTO ideas
+        (title, description, priority, status)
 
-    VALUES (?, ?, ?, ?)
+        VALUES (?, ?, ?, ?)
 
-    """,
-    (
-        idea.title,
-        idea.description,
-        idea.priority,
-        idea.status
-    ))
+        """,
+        (
+            idea.title,
+            idea.description,
+            idea.priority,
+            idea.status
+        ))
 
 
-    connection.commit()
-    connection.close()
+        connection.commit()
+
+
+    except Exception as e:
+
+        print("Unable to save idea.")
+        print(f"Error: {e}")
+
+
+    finally:
+
+        connection.close()
 
 
 def insert_project(project):
