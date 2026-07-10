@@ -46,3 +46,9 @@ def view_projects():
         print(f"Status: {project[3]}")
         print(f"Progress: {project[4]}%")
         print(f"Next Action: {project[5]}")
+    
+        if not projects:
+
+            print("\nNo projects found.")
+
+        return

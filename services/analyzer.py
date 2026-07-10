@@ -33,9 +33,17 @@ def generate_learning_report():
 
     if df.empty:
 
-        print("No learning activity found.")
+        print("""
+            ========== LEARNING REPORT ==========
 
-        return
+                No learning activity found.
+
+                Start adding activities to generate insights.
+
+            =====================================
+        """)
+
+    return
 
 
 

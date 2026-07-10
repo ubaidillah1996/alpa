@@ -65,24 +65,36 @@ def insert_activity(activity):
 
     connection = create_connection()
 
-    cursor = connection.cursor()
+    try:
 
-    cursor.execute("""
-    INSERT INTO activities
-    (date, activity, category, duration, notes, rating)
-    VALUES (?, ?, ?, ?, ?, ?)
-    """,
-    (
-        activity.date,
-        activity.activity,
-        activity.category,
-        activity.duration,
-        activity.notes,
-        activity.rating
-    ))
+        cursor = connection.cursor()
 
-    connection.commit()
-    connection.close()
+        cursor.execute("""
+        INSERT INTO activities
+        (date, activity, category, duration, notes, rating)
+        VALUES (?, ?, ?, ?, ?, ?)
+        """,
+        (
+            activity.date,
+            activity.activity,
+            activity.category,
+            activity.duration,
+            activity.notes,
+            activity.rating
+        ))
+
+        connection.commit()
+
+
+    except Exception as e:
+
+        print("Unable to save activity.")
+        print(f"Error: {e}")
+
+
+    finally:
+
+        connection.close()
 
 def get_activities():
 
@@ -130,33 +142,45 @@ def insert_project(project):
 
     connection = create_connection()
 
-    cursor = connection.cursor()
+    try:
+
+        cursor = connection.cursor()
 
 
-    cursor.execute("""
-    INSERT INTO projects
-    (
-    name,
-    description,
-    status,
-    progress,
-    next_action
-    )
+        cursor.execute("""
+        INSERT INTO projects
+        (
+        name,
+        description,
+        status,
+        progress,
+        next_action
+        )
 
-    VALUES (?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?)
 
-    """,
-    (
-        project.name,
-        project.description,
-        project.status,
-        project.progress,
-        project.next_action
-    ))
+        """,
+        (
+            project.name,
+            project.description,
+            project.status,
+            project.progress,
+            project.next_action
+        ))
 
 
-    connection.commit()
-    connection.close()
+        connection.commit()
+
+
+    except Exception as e:
+
+        print("Unable to save project.")
+        print(f"Error: {e}")
+
+
+    finally:
+
+        connection.close()
 
 def get_projects():
 

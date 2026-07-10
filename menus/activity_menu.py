@@ -57,6 +57,12 @@ def view_activities():
 
     activities = get_activities()
 
+    if not activities:
+
+        print("\nNo learning activities found.")
+
+    return
+
 
     print("\n====== LEARNING HISTORY ======")
 

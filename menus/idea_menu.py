@@ -59,3 +59,9 @@ def view_ideas():
         print(f"Description: {idea[2]}")
         print(f"Priority: {idea[3]}")
         print(f"Status: {idea[4]}")
+    
+    if not ideas:
+
+        print("\nNo ideas found.")
+
+    return
