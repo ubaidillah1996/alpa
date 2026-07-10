@@ -1,4 +1,6 @@
 
+
+from services.intelligence import generate_daily_summary
 from database import (
     create_tables,
 )
@@ -15,6 +17,7 @@ from menus.project_menu import (
     add_project,
     view_projects
 )
+
 
 # def add_activity():
 
@@ -115,7 +118,8 @@ def menu():
 5. Add Project
 6. View Projects
 7. Generate Report
-8. Exit
+8. Daily Summary
+9. Exit
 
         """)
 
@@ -159,6 +163,11 @@ def menu():
         
 
         elif choice == "8":
+
+            generate_daily_summary()
+
+
+        elif choice == "9":
 
             print("Exit")
             break

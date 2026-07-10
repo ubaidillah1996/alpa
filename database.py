@@ -5,9 +5,33 @@ DATABASE_NAME = "learning.db"
 
 
 def create_connection():
-    connection = sqlite3.connect(DATABASE_NAME)
+
+    connection = sqlite3.connect("learning.db")
+
     return connection
 
+def get_active_projects():
+
+    connection = create_connection()
+
+    cursor = connection.cursor()
+
+
+    cursor.execute("""
+    SELECT *
+    FROM projects
+    WHERE status = ?
+    """,
+    ("Active",))
+
+
+    projects = cursor.fetchall()
+
+
+    connection.close()
+
+
+    return projects
 
 def create_tables():
 
@@ -233,3 +257,4 @@ def get_ideas():
 
 
     return ideas
+
