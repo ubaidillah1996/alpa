@@ -5,7 +5,8 @@ from database import get_active_projects
 from services.decision_engine import (
     select_priority_project,
     generate_project_reason,
-    calculate_project_score
+    calculate_project_score,
+    explain_project_decision
 )
 # from services.analyzer import generate_recommendation
 
@@ -222,7 +223,7 @@ def generate_insight(status):
 
 def generate_recommendation():
 
-    # score = calculate_project_score(project) ## salah susunan, output tak keluar
+    # score = calculate_project_score(project) ## salah susunan, output tak keluar ## variable hanya wujud lepas assignment.
     
     print("🔥 NEW SMART RECOMMENDATION RUNNING")
 
@@ -242,14 +243,19 @@ def generate_recommendation():
     score = calculate_project_score(project)
 
     reason = generate_project_reason(project)
-
+    
+    explanation = explain_project_decision(project)
 
     return (
         "\n========== SMART RECOMMENDATION ==========\n\n"
         f"Project: {project[1]}\n"
         f"Decision Score: {score}\n\n"
         f"Progress: {project[4]}%\n\n"
-        f"Reason:\n{reason}\n\n"
+        f"Why selected:\n"
+
++        "\n".join(explanation)
+
++        "\n\n"
         f"Next Action:\n{project[5]}\n\n"
         "=========================================="
     )

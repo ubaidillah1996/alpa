@@ -161,3 +161,31 @@ def calculate_project_score(project):
 
 
     return score
+
+def explain_project_decision(project):
+
+    explanation = []
+
+
+    if project[4] >= 80:
+
+        explanation.append(
+            "✓ High progress level"
+        )
+
+
+    if project[5]:
+
+        explanation.append(
+            "✓ Has defined next action"
+        )
+
+
+    if project[4] >= 90:
+
+        explanation.append(
+            "✓ Close to completion"
+        )
+
+
+    return explanation
