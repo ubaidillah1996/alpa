@@ -86,7 +86,8 @@ def create_tables():
         description TEXT,
         status TEXT,
         progress INTEGER,
-        next_action TEXT
+        next_action TEXT,
+        priority TEXT
     )
     """)
 
@@ -197,6 +198,14 @@ def insert_project(project):
 
         cursor = connection.cursor()
 
+        print("DEBUG TYPES") ## tujuan trace bug, mana yang problem
+        print(type(project.name))
+        print(type(project.description))
+        print(type(project.status))
+        print(type(project.progress))
+        print(type(project.next_action))
+        print(type(project.priority))
+
 
         cursor.execute("""
         INSERT INTO projects
@@ -205,10 +214,11 @@ def insert_project(project):
         description,
         status,
         progress,
-        next_action
+        next_action,
+        priority
         )
 
-        VALUES (?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?,?)
 
         """,
         (
@@ -216,8 +226,13 @@ def insert_project(project):
             project.description,
             project.status,
             project.progress,
-            project.next_action
+            project.next_action,
+            project.priority
         ))
+
+        print("DEBUG INSERT:") ## print bahagian ni ibarat error logging = keluarkan maklumat untuk cari punca, akan keluarkan error output untuk detect problem ada kat mana.
+        print(project.name)
+        print(project.priority)
 
 
         connection.commit()

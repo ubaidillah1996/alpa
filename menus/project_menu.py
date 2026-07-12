@@ -14,14 +14,17 @@ def add_project():
     100
 )
     next_action = input("Next Action: ")
-
+    priority = input(
+    "Priority (High/Medium/Low): "
+    )
 
     new_project = Project(
         name,
         description,
         status,
         progress,
-        next_action
+        next_action,
+        priority
     )
 
 
@@ -78,3 +81,4 @@ def view_projects():
         print(f"Status: {project[3]}")
         print(f"Progress: {project[4]}%")
         print(f"Next Action: {project[5]}")
+        print(f"Priority: {project[6]}")
