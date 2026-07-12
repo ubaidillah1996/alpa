@@ -37,29 +37,77 @@ if __name__ == "__main__": ## testing output
 
 def select_priority_project(projects):
 
-    if not projects:
-
-        return None
-
-
     priority_project = None
-
     highest_score = -1
 
 
     for project in projects:
 
-        progress = project[4]
+        score = calculate_project_score(project)
 
 
-        if progress > highest_score:
+        print(
+            f"{project[1]} = {score}"
+        )
 
-            score = 3
 
-            highest_score = progress
+        if score > highest_score:
+
+            highest_score = score
             priority_project = project
 
+
+        elif score == highest_score:
+
+            current_progress = project[4]
+            selected_progress = priority_project[4]
+
+
+            if current_progress > selected_progress:
+
+                priority_project = project
+
+
     return priority_project
+
+
+# def select_priority_project(projects):
+
+#     # if not projects:
+
+#     #     return None
+
+
+#     priority_project = None
+
+#     highest_score = -1
+
+
+#     for project in projects:
+
+#         progress = project[4]
+
+#         score = calculate_project_score(project)
+
+#         print(
+#         f"{project[1]} = {score}"
+#         )
+
+#         if score > highest_score:
+
+#             highest_score = score
+#             priority_project = project
+
+#         elif score == highest_score:
+
+#             current_progress = project[4]
+#             selected_progress = priority_project[4]
+
+#             if current_progress > selected_progress:
+
+#                 priority_project = project
+
+#     return priority_project
 
 def generate_project_reason(project):
 
@@ -79,3 +127,16 @@ def generate_project_reason(project):
     else:
 
         return "Project needs more attention."
+
+def calculate_project_score(project):
+
+    progress = project[4]
+
+    score = progress
+
+
+    if project[5]:
+        score += 10
+
+
+    return score
