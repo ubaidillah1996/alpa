@@ -128,6 +128,19 @@ def generate_project_reason(project):
 
         return "Project needs more attention."
 
+# def calculate_project_score(project): ## disable this function, sbb upgrade
+
+#     progress = project[4]
+
+#     score = progress
+
+
+#     if project[5]:
+#         score += 10
+
+
+#     return score
+
 def calculate_project_score(project):
 
     progress = project[4]
@@ -135,8 +148,16 @@ def calculate_project_score(project):
     score = progress
 
 
+    # has next action
     if project[5]:
+
         score += 10
+
+
+    # long next action means clearer action
+    if len(project[5]) > 10:
+
+        score += 5
 
 
     return score
