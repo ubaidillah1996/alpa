@@ -109,24 +109,49 @@ def select_priority_project(projects):
 
 #     return priority_project
 
+# 
+
 def generate_project_reason(project):
 
     progress = project[4]
+    priority = project[6]
+    next_action = project[5]
+
+
+    reasons = []
+
+
+    if priority == "High":
+
+        reasons.append("✓ High priority project")
+
+
+    elif priority == "Medium":
+
+        reasons.append("✓ Medium priority project")
 
 
     if progress >= 80:
 
-        return "Project is close to completion."
+        reasons.append("✓ High progress level")
 
 
     elif progress >= 50:
 
-        return "Project has good progress and should continue."
+        reasons.append("✓ Good progress level")
 
 
     else:
 
-        return "Project needs more attention."
+        reasons.append("✓ Needs more attention")
+
+
+    if next_action:
+
+        reasons.append("✓ Has defined next action")
+
+
+    return "\n".join(reasons)
 
 # def calculate_project_score(project): ## disable this function, sbb upgrade
 
@@ -140,6 +165,19 @@ def generate_project_reason(project):
 
 
 #     return score
+
+def get_priority_bonus(priority): ## kat sini berlaku konflik pasal score, nk mntk ai bagi recommendation mana yang penting.
+
+    if priority == "High":
+        return 80
+
+    elif priority == "Medium":
+        return 40
+
+    elif priority == "Low":
+        return 0
+
+    return 0 # berakhir dengan none, supaya tak crash
 
 def calculate_project_score(project):
 
@@ -158,6 +196,12 @@ def calculate_project_score(project):
     if len(project[5]) > 10:
 
         score += 5
+
+
+    # priority weight
+    priority_bonus = get_priority_bonus(project[6])
+
+    score += priority_bonus
 
 
     return score
