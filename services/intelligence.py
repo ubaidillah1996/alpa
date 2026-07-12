@@ -225,12 +225,12 @@ def generate_recommendation():
 
     # score = calculate_project_score(project) ## salah susunan, output tak keluar ## variable hanya wujud lepas assignment.
     
-    print("🔥 NEW SMART RECOMMENDATION RUNNING")
+    # print("🔥 NEW SMART RECOMMENDATION RUNNING")
 
     projects = get_active_projects()
 
-    print("\nDEBUG PROJECTS:")
-    print(projects)
+    # print("\nDEBUG PROJECTS:")
+    # print(projects)
 
 
     if not projects:
