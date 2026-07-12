@@ -52,24 +52,30 @@ def select_priority_project(projects):
         progress = project[4]
 
 
-        if progress >= 80:
+        if progress > highest_score:
 
             score = 3
 
-        elif progress >= 50:
-
-            score = 2
-
-        else:
-
-            score = 1
-
-
-        if score > highest_score:
-
-            highest_score = score
-
+            highest_score = progress
             priority_project = project
 
-
     return priority_project
+
+def generate_project_reason(project):
+
+    progress = project[4]
+
+
+    if progress >= 80:
+
+        return "Project is close to completion."
+
+
+    elif progress >= 50:
+
+        return "Project has good progress and should continue."
+
+
+    else:
+
+        return "Project needs more attention."

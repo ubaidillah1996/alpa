@@ -17,7 +17,7 @@ from menus.project_menu import (
     add_project,
     view_projects
 )
-
+from services.intelligence import generate_recommendation
 
 # def add_activity():
 
@@ -118,7 +118,7 @@ def menu():
 5. Add Project
 6. View Projects
 7. Generate Report
-8. Daily Summary
+8. Smart Project Recommendation
 9. Exit
 
         """)
@@ -161,15 +161,17 @@ def menu():
 
         #     generate_learning_report()
         
-        elif choice == "7": ## testing generate report, debugging sbb tak kluar report
-
-            print("REPORT FUNCTION START")
+        # 
+        
+        elif choice == "7": # keputusan akhir, dua function dipisahkan unutk mudah debug dan kerja lebih kemas
 
             generate_learning_report()
 
         elif choice == "8":
 
-            generate_daily_summary()
+            recommendation = generate_recommendation()
+
+            print(recommendation)
 
 
         elif choice == "9":

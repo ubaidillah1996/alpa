@@ -2,8 +2,11 @@ from services.analyzer import get_activity_dataframe
 from datetime import datetime
 from datetime import timedelta
 from database import get_active_projects
-from services.decision_engine import select_priority_project
-
+from services.decision_engine import (
+    select_priority_project,
+    generate_project_reason
+)
+# from services.analyzer import generate_recommendation
 
 def generate_daily_summary():
 
@@ -217,6 +220,8 @@ def generate_insight(status):
 #     ...
 
 def generate_recommendation():
+    
+    print("🔥 NEW SMART RECOMMENDATION RUNNING")
 
     projects = get_active_projects()
 
@@ -232,9 +237,16 @@ def generate_recommendation():
     project = select_priority_project(projects)
 
 
+    reason = generate_project_reason(project)
+
+
     return (
-        f"Focus on: {project[1]}\n"
-        f"Next Action: {project[5]}"
+        "\n========== SMART RECOMMENDATION ==========\n\n"
+        f"Project: {project[1]}\n"
+        f"Progress: {project[4]}%\n\n"
+        f"Reason:\n{reason}\n\n"
+        f"Next Action:\n{project[5]}\n\n"
+        "=========================================="
     )
 
 ## database.py → ambil data
