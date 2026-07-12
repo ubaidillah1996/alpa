@@ -1,10 +1,25 @@
 import sqlite3
-
+import os
 
 DATABASE_NAME = "learning.db"
 
 
+# 
+
+# def create_connection():
+
+#     connection = sqlite3.connect("learning.db")
+
+#     print(connection)
+
+#     return connection
+
 def create_connection():
+
+    print(
+        "DATABASE:",
+        os.path.abspath("learning.db")
+    )
 
     connection = sqlite3.connect("learning.db")
 

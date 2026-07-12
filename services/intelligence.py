@@ -2,6 +2,7 @@ from services.analyzer import get_activity_dataframe
 from datetime import datetime
 from datetime import timedelta
 from database import get_active_projects
+from services.decision_engine import select_priority_project
 
 
 def generate_daily_summary():
@@ -183,9 +184,44 @@ def generate_insight(status):
             "Learning activity is consistent."
         )
     
+# def generate_recommendation():
+
+#     projects = get_active_projects()
+
+
+#     if not projects:
+
+#         return "No active project found."
+
+
+#     project = select_priority_project(projects)
+
+
+#     return (
+#         f"Focus on: {project[1]}\n"
+#         f"Next Action: {project[5]}"
+#     )
+
+
+# def generate_recommendation():
+
+#     projects = get_active_projects()
+
+#     print("\nDEBUG PROJECTS:")
+#     print(projects)
+
+#     if not projects:
+
+#         return "No active project found."
+
+#     ...
+
 def generate_recommendation():
 
     projects = get_active_projects()
+
+    print("\nDEBUG PROJECTS:")
+    print(projects)
 
 
     if not projects:
@@ -193,14 +229,13 @@ def generate_recommendation():
         return "No active project found."
 
 
-    project = projects[0]
+    project = select_priority_project(projects)
 
 
     return (
         f"Focus on: {project[1]}\n"
         f"Next Action: {project[5]}"
     )
-
 
 ## database.py → ambil data
 ## intelligence.py → buat keputusan daripada data

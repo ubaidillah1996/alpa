@@ -30,12 +30,44 @@ def add_project():
     print("\nProject saved!")
 
 
+# def view_projects():
+
+#     projects = get_projects()
+
+
+#     print("\n====== PROJECT TRACKER ======")
+
+
+#     for project in projects:
+
+#         print("--------------------")
+#         print(f"Project: {project[1]}")
+#         print(f"Description: {project[2]}")
+#         print(f"Status: {project[3]}")
+#         print(f"Progress: {project[4]}%")
+#         print(f"Next Action: {project[5]}")
+    
+#         if not projects:
+
+#             print("\nNo projects found.")
+
+#         return
+
+## remark, code diatas menyebabkan fungsi view project terhenti.  masalah, " return" diletakkan dalam loop. apa jadi?
+## ambil semua project, print pertama sahaja, dan terus exit.
+
 def view_projects():
 
     projects = get_projects()
 
 
     print("\n====== PROJECT TRACKER ======")
+
+
+    if not projects:
+
+        print("\nNo projects found.")
+        return
 
 
     for project in projects:
@@ -46,9 +78,3 @@ def view_projects():
         print(f"Status: {project[3]}")
         print(f"Progress: {project[4]}%")
         print(f"Next Action: {project[5]}")
-    
-        if not projects:
-
-            print("\nNo projects found.")
-
-        return

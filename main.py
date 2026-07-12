@@ -157,10 +157,15 @@ def menu():
             view_projects()
 
 
-        elif choice == "7":
+        # elif choice == "7":
+
+        #     generate_learning_report()
+        
+        elif choice == "7": ## testing generate report, debugging sbb tak kluar report
+
+            print("REPORT FUNCTION START")
 
             generate_learning_report()
-        
 
         elif choice == "8":
 

@@ -43,7 +43,7 @@ def generate_learning_report():
             =====================================
         """)
 
-    return
+        return ## debugging, return kena masuk under print, baru tak bugging.
 
 
 
