@@ -208,3 +208,11 @@ Built as a continuous learning project while exploring:
 ---
 
 ⭐ ALPA is continuously evolving from a simple tracker into a personal AI learning companion.
+
+## Version History
+
+### v0.8
+- Added project progress history tracking
+- Added project analytics
+- Track progress changes over time
+- Calculate project growth rate
