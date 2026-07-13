@@ -211,6 +211,19 @@ def explain_project_decision(project):
     explanation = []
 
 
+    if project[6] == "High":
+
+        explanation.append(
+            "✓ High priority project"
+        )
+
+    elif project[6] == "Medium":
+
+        explanation.append(
+            "✓ Medium priority project"
+        )
+
+
     if project[4] >= 80:
 
         explanation.append(
@@ -233,3 +246,31 @@ def explain_project_decision(project):
 
 
     return explanation
+
+# def explain_project_decision(project):
+
+#     explanation = []
+
+
+#     if project[4] >= 80:
+
+#         explanation.append(
+#             "✓ High progress level"
+#         )
+
+
+#     if project[5]:
+
+#         explanation.append(
+#             "✓ Has defined next action"
+#         )
+
+
+#     if project[4] >= 90:
+
+#         explanation.append(
+#             "✓ Close to completion"
+#         )
+
+
+#     return explanation
