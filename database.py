@@ -301,6 +301,78 @@ def get_projects():
 
         connection.close()
 
+def get_project_history(project_id):
+
+    connection = create_connection()
+
+    try:
+
+        cursor = connection.cursor()
+
+
+        cursor.execute("""
+        SELECT *
+        FROM project_history
+        WHERE project_id = ?
+        ORDER BY id DESC
+        """,
+        (project_id,)
+        )
+
+
+        history = cursor.fetchall()
+
+
+        return history
+
+
+    except Exception as e:
+
+        print("Unable to get project history.")
+        print(f"Error: {e}")
+
+        return []
+
+
+    finally:
+
+        connection.close()
+
+def analyze_project_progress(project_id):
+
+    history = get_project_history(project_id)
+
+
+    if not history:
+
+        return None
+
+
+    total_gain = 0
+
+
+    for record in history:
+
+        old_progress = record[2]
+        new_progress = record[3]
+
+        gain = new_progress - old_progress
+
+        total_gain += gain
+
+
+    update_count = len(history)
+
+
+    average_gain = total_gain / update_count
+
+
+    return {
+        "total_gain": total_gain,
+        "updates": update_count,
+        "average_gain": average_gain
+    }
+
 def update_project_progress(project_id, progress):
 
     connection = create_connection()

@@ -19,6 +19,8 @@ from menus.project_menu import (
 )
 from services.intelligence import generate_recommendation
 from database import update_project_progress
+from database import get_project_history
+from database import analyze_project_progress
 
 # def add_activity():
 
@@ -123,6 +125,56 @@ def update_project():
 
     print("\nProject updated successfully!")
 
+def view_project_history():
+
+    print("\n====== PROJECT HISTORY ======")
+
+
+    project_id = int(
+        input("Project ID: ")
+    )
+
+
+    history = get_project_history(project_id)
+
+
+    if not history:
+
+        print("\nNo history found.")
+        return
+
+
+    for record in history:
+
+        print("--------------------")
+        print(f"Project ID: {record[1]}")
+        print(f"Progress: {record[2]}% -> {record[3]}%")
+        print(f"Changed At: {record[4]}")
+
+def view_project_analytics():
+
+    print("\n====== PROJECT ANALYTICS ======")
+
+
+    project_id = int(
+        input("Project ID: ")
+    )
+
+
+    analytics = analyze_project_progress(project_id)
+
+
+    if not analytics:
+
+        print("\nNo analytics found.")
+        return
+
+
+    print("--------------------")
+    print(f"Total Progress Gain: +{analytics['total_gain']}%")
+    print(f"Total Updates: {analytics['updates']}")
+    print(f"Average Growth: {analytics['average_gain']:.2f}%")
+
 def menu():
 
     create_tables()
@@ -144,7 +196,9 @@ def menu():
 7. Generate Report
 8. Smart Project Recommendation
 9. Update Project
-10. Exit
+10. View Project History
+11. View Project Analytics
+12. Exit
 
         """)
 
@@ -205,6 +259,16 @@ def menu():
 
 
         elif choice == "10":
+
+            view_project_history()
+
+
+        elif choice == "11":
+
+            view_project_analytics()
+
+
+        elif choice == "12":
 
             print("Exit")
             break
