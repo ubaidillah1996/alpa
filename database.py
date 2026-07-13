@@ -500,3 +500,26 @@ def get_ideas():
 
     return ideas
 
+def get_project_progress(project_id):
+
+    connection = create_connection()
+
+    cursor = connection.cursor()
+
+
+    cursor.execute("""
+    SELECT progress
+    FROM projects
+    WHERE id = ?
+    """,
+    (project_id,)
+    )
+
+
+    result = cursor.fetchone()
+
+
+    connection.close()
+
+
+    return result[0]

@@ -21,6 +21,9 @@ from services.intelligence import generate_recommendation
 from database import update_project_progress
 from database import get_project_history
 from database import analyze_project_progress
+from database import get_project_progress
+
+from services.insight import generate_project_insight
 
 # def add_activity():
 
@@ -174,6 +177,13 @@ def view_project_analytics():
     print(f"Total Progress Gain: +{analytics['total_gain']}%")
     print(f"Total Updates: {analytics['updates']}")
     print(f"Average Growth: {analytics['average_gain']:.2f}%")
+
+    current_progress = get_project_progress(project_id)
+
+    generate_project_insight(
+    analytics,
+    current_progress
+)
 
 def menu():
 
