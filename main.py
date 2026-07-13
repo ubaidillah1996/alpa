@@ -18,6 +18,7 @@ from menus.project_menu import (
     view_projects
 )
 from services.intelligence import generate_recommendation
+from database import update_project_progress
 
 # def add_activity():
 
@@ -99,6 +100,29 @@ from services.intelligence import generate_recommendation
 #         print(f"Progress: {project[4]}%")
 #         print(f"Next Action: {project[5]}")
 
+def update_project():
+
+    print("\n====== UPDATE PROJECT PROGRESS ======")
+
+
+    project_id = int(
+        input("Project ID: ")
+    )
+
+
+    new_progress = int(
+        input("New Progress (%): ")
+    )
+
+
+    update_project_progress(
+        project_id,
+        new_progress
+    )
+
+
+    print("\nProject updated successfully!")
+
 def menu():
 
     create_tables()
@@ -119,7 +143,8 @@ def menu():
 6. View Projects
 7. Generate Report
 8. Smart Project Recommendation
-9. Exit
+9. Update Project
+10. Exit
 
         """)
 
@@ -176,13 +201,12 @@ def menu():
 
         elif choice == "9":
 
+            update_project()
+
+
+        elif choice == "10":
+
             print("Exit")
             break
-
-
-        else:
-
-            print("Invalid choice")
-
 
 menu()

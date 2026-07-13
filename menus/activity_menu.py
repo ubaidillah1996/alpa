@@ -64,15 +64,15 @@ def view_activities():
     return
 
 
-    print("\n====== LEARNING HISTORY ======")
+    # print("\n====== LEARNING HISTORY ======")
 
 
-    for activity in activities:
+    # for activity in activities:
 
-        print("--------------------")
-        print(f"Date: {activity[1]}")
-        print(f"Activity: {activity[2]}")
-        print(f"Category: {activity[3]}")
-        print(f"Duration: {activity[4]} minutes")
-        print(f"Notes: {activity[5]}")
-        print(f"Rating: {activity[6]}/5")
+    #     print("--------------------")
+    #     print(f"Date: {activity[1]}")
+    #     print(f"Activity: {activity[2]}")
+    #     print(f"Category: {activity[3]}")
+    #     print(f"Duration: {activity[4]} minutes")
+    #     print(f"Notes: {activity[5]}")
+    #     print(f"Rating: {activity[6]}/5")

@@ -82,3 +82,4 @@ def view_projects():
         print(f"Progress: {project[4]}%")
         print(f"Next Action: {project[5]}")
         print(f"Priority: {project[6]}")
+        print(f"ID: {project[0]}")

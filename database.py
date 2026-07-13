@@ -248,19 +248,79 @@ def insert_project(project):
 
         connection.close()
 
+# def get_projects():
+
+#     connection = create_connection()
+
+#     cursor = connection.cursor()
+
+
+#     cursor.execute("""
+#     SELECT * FROM projects
+#     """)
+
 def get_projects():
 
     connection = create_connection()
 
-    cursor = connection.cursor()
+    try:
+
+        cursor = connection.cursor()
 
 
-    cursor.execute("""
-    SELECT * FROM projects
-    """)
+        cursor.execute("""
+        SELECT * FROM projects
+        """)
 
 
-    projects = cursor.fetchall()
+        projects = cursor.fetchall()
+
+
+        return projects
+
+
+    except Exception as e:
+
+        print("Unable to get projects.")
+        print(f"Error: {e}")
+
+        return []
+
+
+    finally:
+
+        connection.close()
+
+def update_project_progress(project_id, progress):
+
+    connection = create_connection()
+
+    try:
+
+        cursor = connection.cursor()
+
+        cursor.execute("""
+        UPDATE projects
+        SET progress = ?
+        WHERE id = ?
+        """,
+        (
+            progress,
+            project_id
+        ))
+
+        connection.commit()
+
+
+    except Exception as e:
+
+        print("Unable to update project.")
+        print(f"Error: {e}")
+
+
+    finally:
+
+        projects = cursor.fetchall()
 
 
     connection.close()
