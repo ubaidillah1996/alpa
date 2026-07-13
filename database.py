@@ -91,6 +91,16 @@ def create_tables():
     )
     """)
 
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS project_history (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        project_id INTEGER,
+        old_progress INTEGER,
+        new_progress INTEGER,
+        changed_at TEXT
+    )
+    """)
+
 
     connection.commit()
     connection.close()
@@ -299,6 +309,41 @@ def update_project_progress(project_id, progress):
 
         cursor = connection.cursor()
 
+
+        # 1. Get current progress
+        cursor.execute("""
+        SELECT progress
+        FROM projects
+        WHERE id = ?
+        """,
+        (project_id,)
+        )
+
+
+        old_progress = cursor.fetchone()[0]
+
+
+        # 2. Save history
+        cursor.execute("""
+        INSERT INTO project_history
+        (
+        project_id,
+        old_progress,
+        new_progress,
+        changed_at
+        )
+
+        VALUES (?, ?, ?, datetime('now'))
+
+        """,
+        (
+            project_id,
+            old_progress,
+            progress
+        ))
+
+
+        # 3. Update project
         cursor.execute("""
         UPDATE projects
         SET progress = ?
@@ -309,7 +354,11 @@ def update_project_progress(project_id, progress):
             project_id
         ))
 
+
         connection.commit()
+
+
+        print("Project progress updated successfully!")
 
 
     except Exception as e:
@@ -320,13 +369,44 @@ def update_project_progress(project_id, progress):
 
     finally:
 
-        projects = cursor.fetchall()
+        connection.close()
+
+# def update_project_progress(project_id, progress): ## old version disposs.
+
+#     connection = create_connection()
+
+#     try:
+
+#         cursor = connection.cursor()
+
+#         cursor.execute("""
+#         UPDATE projects
+#         SET progress = ?
+#         WHERE id = ?
+#         """,
+#         (
+#             progress,
+#             project_id
+#         ))
+
+#         connection.commit()
 
 
-    connection.close()
+#     except Exception as e:
+
+#         print("Unable to update project.")
+#         print(f"Error: {e}")
 
 
-    return projects
+#     finally:
+
+#         projects = cursor.fetchall()
+
+
+#     connection.close()
+
+
+#     return projects
 
 def get_ideas():
 
