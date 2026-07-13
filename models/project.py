@@ -16,3 +16,18 @@ class Project:
         self.progress = progress
         self.next_action = next_action ## makluman, bahagian class jangan letak coma, nnty die ingat tuple, bila run tak kluar atau crash.
         self.priority = priority
+
+class Goal:
+
+    def __init__(
+        self,
+        title,
+        description,
+        deadline,
+        status
+    ):
+
+        self.title = title
+        self.description = description
+        self.deadline = deadline
+        self.status = status

@@ -101,6 +101,34 @@ def create_tables():
     )
     """)
 
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS goals (
+
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+    title TEXT,
+
+    description TEXT,
+
+    deadline TEXT,
+
+    status TEXT
+
+    )
+    """)
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS goal_projects (
+
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+    goal_id INTEGER,
+
+    project_id INTEGER
+
+    )
+    """)
+
 
     connection.commit()
     connection.close()
@@ -110,6 +138,7 @@ if __name__ == "__main__":
     create_tables()
     print("Database created successfully!")
 
+# insert_goal_project(1, 1)   ## testing relationship
 
 def insert_activity(activity):
 
@@ -523,3 +552,136 @@ def get_project_progress(project_id):
 
 
     return result[0]
+
+def insert_goal(goal):
+
+    connection = create_connection()
+
+    try:
+
+        # print("DEBUG GOAL OBJECT") ## kegunaan untuk debugg logging sahaja, dispose bila dah setel
+        # print(type(goal))
+        # print(goal.__dict__)
+
+        cursor = connection.cursor()
+
+        cursor.execute("""
+        INSERT INTO goals
+        (
+            title,
+            description,
+            deadline,
+            status
+        )
+
+        VALUES (?, ?, ?, ?)
+        """,
+        (
+            goal.goal_name,
+            goal.description,
+            goal.target_date,
+            goal.status
+        ))
+
+        connection.commit()
+
+        return True
+
+    except Exception as e:
+
+        print("Unable to save goal.")
+        print(f"Error: {e}")
+
+        return False
+
+    finally:
+
+        connection.close()
+
+def get_goals():
+
+    connection = create_connection()
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+    SELECT * FROM goals
+    """)
+
+    goals = cursor.fetchall()
+
+    connection.close()
+
+    return goals
+
+def insert_goal_project(goal_id, project_id):
+
+    connection = create_connection()
+
+    try:
+
+        cursor = connection.cursor()
+
+        cursor.execute("""
+        INSERT INTO goal_projects
+        (
+            goal_id,
+            project_id
+        )
+
+        VALUES (?, ?)
+        """,
+        (
+            goal_id,
+            project_id
+        ))
+
+        connection.commit()
+
+        return True
+
+
+    except Exception as e:
+
+        print("Unable to link project.")
+        print(f"Error: {e}")
+
+        return False
+
+
+    finally:
+
+        connection.close()
+
+def get_goal_projects(goal_id):
+
+    connection = create_connection()
+
+    cursor = connection.cursor()
+
+
+    cursor.execute("""
+    SELECT
+        projects.*
+
+    FROM goal_projects
+
+    JOIN projects
+
+    ON goal_projects.project_id = projects.id
+
+    WHERE goal_projects.goal_id = ?
+
+    """,
+    (
+        goal_id,
+    ))
+
+
+    projects = cursor.fetchall()
+
+
+    connection.close()
+
+
+    return projects

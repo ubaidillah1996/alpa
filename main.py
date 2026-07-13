@@ -22,8 +22,11 @@ from database import update_project_progress
 from database import get_project_history
 from database import analyze_project_progress
 from database import get_project_progress
+from database import insert_goal
+from database import get_goals
 
 from services.insight import generate_project_insight
+from models.goal import Goal
 
 # def add_activity():
 
@@ -185,6 +188,65 @@ def view_project_analytics():
     current_progress
 )
 
+def add_goal():
+
+    title = input("Goal Title: ")
+
+    description = input(
+        "Description: "
+    )
+
+    deadline = input(
+        "Deadline: "
+    )
+
+    status = input(
+        "Status: "
+    )
+
+
+    new_goal = Goal(
+        title,
+        description,
+        deadline,
+        status
+    )
+
+
+    success = insert_goal(new_goal)
+
+
+    if success:
+
+        print("\nGoal saved!")
+
+    else:
+
+        print("\nFailed to save goal.")
+
+
+def view_goals():
+
+    goals = get_goals()
+
+    print("\n====== GOALS ======")
+
+
+    if not goals:
+
+        print("\nNo goals found.")
+        return
+
+
+    for goal in goals:
+
+        print("--------------------")
+        print(f"ID: {goal[0]}")
+        print(f"Title: {goal[1]}")
+        print(f"Description: {goal[2]}")
+        print(f"Deadline: {goal[3]}")
+        print(f"Status: {goal[4]}")
+
 def menu():
 
     create_tables()
@@ -208,7 +270,11 @@ def menu():
 9. Update Project
 10. View Project History
 11. View Project Analytics
-12. Exit
+12. Add Goal
+13. View Goals
+14. Exit
+15. Link Goal With Project
+16. View Goal Projects
 
         """)
 
@@ -277,10 +343,18 @@ def menu():
 
             view_project_analytics()
 
-
         elif choice == "12":
+
+            add_goal()
+
+        elif choice == "13":
+
+            view_goals()
+
+        elif choice == "14":
 
             print("Exit")
             break
 
 menu()
+
