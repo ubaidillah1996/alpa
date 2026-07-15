@@ -46,9 +46,9 @@ def select_priority_project(projects):
         score = calculate_project_score(project)
 
 
-        print(
-            f"{project[1]} = {score}"
-        )
+        # print(
+        #     f"{project[1]} = {score}"
+        # )
 
 
         if score > highest_score:
