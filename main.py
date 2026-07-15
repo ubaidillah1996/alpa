@@ -27,6 +27,11 @@ from database import get_goals
 
 from services.insight import generate_project_insight
 from models.goal import Goal
+from database import (
+    insert_goal_project,
+    get_goal_projects
+)
+
 
 # def add_activity():
 
@@ -247,6 +252,62 @@ def view_goals():
         print(f"Deadline: {goal[3]}")
         print(f"Status: {goal[4]}")
 
+def link_goal_project():
+
+    goal_id = int(
+        input("Goal ID: ")
+    )
+
+    project_id = int(
+        input("Project ID: ")
+    )
+
+
+    result = insert_goal_project(
+        goal_id,
+        project_id
+    )
+
+
+    if result:
+
+        print("\nGoal linked successfully!")
+
+    else:
+
+        print("\nFailed to link goal.")
+
+def view_goal_projects():
+
+    goal_id = int(
+        input("Goal ID: ")
+    )
+
+
+    projects = get_goal_projects(
+        goal_id
+    )
+
+
+    print("\n====== RELATED PROJECTS ======")
+
+
+    if not projects:
+
+        print("\nNo linked projects.")
+        return
+
+
+    for project in projects:
+
+        print("--------------------")
+        print(f"Project: {project[1]}")
+        print(f"Description: {project[2]}")
+        print(f"Status: {project[3]}")
+        print(f"Progress: {project[4]}%")
+        print(f"Next Action: {project[5]}")
+        print(f"Priority: {project[6]}")
+
 def menu():
 
     create_tables()
@@ -272,9 +333,9 @@ def menu():
 11. View Project Analytics
 12. Add Goal
 13. View Goals
-14. Exit
-15. Link Goal With Project
-16. View Goal Projects
+14. Link Goal With Project
+15. View Goal Projects
+16. Exit
 
         """)
 
@@ -352,6 +413,16 @@ def menu():
             view_goals()
 
         elif choice == "14":
+
+            link_goal_project()
+
+
+        elif choice == "15":
+
+            view_goal_projects()
+
+
+        elif choice == "16":
 
             print("Exit")
             break
