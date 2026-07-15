@@ -1,218 +1,295 @@
-# 🚀 ALPA — AI Personal Learning Assistant
+# ALPA - AI Learning Progress Assistant
 
-**Version: v0.4.0**
+ALPA (AI Learning Progress Assistant) is a personal learning and project management assistant built to help track learning progress, manage projects, organize goals, and generate insights based on daily activities.
 
-ALPA (AI Personal Learning Assistant) is a Python-based productivity system designed to track learning activities, manage ideas and projects, and provide intelligent insights based on personal learning data.
-
-The goal of ALPA is to transform raw learning records into meaningful analysis and actionable recommendations.
+The main purpose of ALPA is to help learners stay consistent, understand their progress, and decide what to focus on next.
 
 ---
 
-## ✨ Features
+# 🚀 ALPA v1.0
 
-### 📚 Learning Activity Tracker
+ALPA v1.0 is a CLI-based productivity system built with Python and SQLite.
 
-* Record daily learning activities
-* Track category, duration, notes, and rating
-* Store learning history using SQLite database
-* Validate user input before saving data
+The system combines:
 
----
-
-### 💡 Idea Vault
-
-Manage and organize ideas with:
-
-* Title
-* Description
-* Priority
-* Status
+- Learning activity tracking
+- Project management
+- Goal tracking
+- Progress analytics
+- Smart project recommendation
+- Personal dashboard overview
 
 ---
 
-### 🚀 Project Tracker
+# ✨ Features
 
-Track ongoing projects with:
+## 1. Learning Activity Tracker
 
-* Project name
-* Description
-* Status
-* Progress percentage
-* Next action
+Track daily learning activities:
 
----
+- Activity name
+- Category
+- Duration
+- Notes
+- Self-rating
 
-# 🧠 Intelligence Layer (v0.4.0)
+Example:
 
-ALPA now includes an intelligence system that analyzes learning behavior.
+Activity:
+Learn FastAPI
 
-## Daily Analysis
+Category:
+Programming
+
+Duration:
+60 minutes
+
+## 2. Activity Report & Insight Engine
+
+Generate learning reports based on recorded activities.
 
 Provides:
 
-* Today's learning sessions
-* Total learning time
-* Activity summary
+- Total learning sessions
+- Total learning time
+- Most active learning category
+- Activity breakdown
+- Learning recommendations
+
+Example output:
+
+========== LEARNING REPORT ==========
+
+Total Learning Sessions: 5
+Total Learning Time: 300 minutes
+Most Active Category: Programming
+
+====================================
+
+# 3. Project Tracker
+
+Manage personal and development projects.
+
+Features:
+
+- Create projects
+- View projects
+- Update progress
+- Track next action
+- Set priority
+
+Project information:
+
+- Name
+- Description
+- Status
+- Progress percentage
+- Next action
+- Priority level
+
+
+
+# 4. Project Analytics
+
+Analyze project development progress.
+
+Tracks:
+
+- Total progress gain
+- Number of updates
+- Average growth
 
 Example:
 
-```
-Today's Sessions: 3
-Today's Learning Time: 180 minutes
-```
+========== PROJECT ANALYTICS ==========
 
----
+Total Progress Gain: +30%
+Total Updates: 2
+Average Growth: 15%
 
-## Weekly Performance Analysis
+=======================================
 
-Analyzes recent learning patterns:
+# 5. Project History Tracking
 
-* 7-day activity tracking
-* Weekly average learning time
-* Performance comparison
+Every project progress update is recorded.
 
 Example:
 
-```
-7-Day Sessions: 4
-Weekly Average: 34.3 minutes
-Status: Above Average 🚀
-```
+Project ID: 11
 
----
+Progress:
+60% -> 80%
 
-## Insight Generator
+Changed At:
+2026-07-13
 
-Converts data into meaningful observations.
+# 6. Smart Project Recommendation Engine
 
-Example:
+ALPA analyzes active projects and recommends the most important project to focus on.
 
-```
-Strong learning momentum today.
-```
+The decision is based on:
 
----
-
-## Recommendation Engine
-
-Uses project data to suggest the next focus area.
+- Project priority
+- Current progress
+- Defined next action
+- Project status
 
 Example:
 
-```
-Focus on: Dota 2 Match Analyzer
+========== SMART RECOMMENDATION ==========
+
+Project:
+Priority Test
+
+Decision Score:
+185
+
+Why selected:
+✓ High priority project
+✓ Has defined next action
 
 Next Action:
-Complete CRUD
-```
+Important Task
+
+==========================================
+
+# 7. Goal Management
+
+Track important personal goals.
+
+Features:
+
+- Create goals
+- View goals
+- Manage status
+- Set deadlines
+
+Example:
+
+Goal:
+Join Gamuda AI Academy
+
+Deadline:
+31/7/2026
+
+Status:
+Active
+
+# 8. Goal & Project Relationship
+
+Connect goals with related projects.
+
+Example:
+
+Goal:
+Join Gamuda AI Academy
+
+Related Project:
+Portfolio Preparation
+AI Learning Assistant
+Dota 2 Analyzer
+
+
+This helps understand which projects contribute towards bigger goals.
 
 ---
 
-# 🏗️ Project Architecture
+# 9. ALPA Dashboard
 
-```
+A central overview of current progress.
+
+Dashboard displays:
+
+- Total goals
+- Total projects
+- Active projects
+- Learning sessions
+- Learning time
+- Main learning focus
+- Recommended project
+
+Example:
+
+========== ALPA DASHBOARD ==========
+
+Goals: 1
+Projects: 11
+Active Projects: 7
+Learning Sessions: 5
+Learning Time: 300 minutes
+Main Focus: Programming
+Recommended Project: Priority Test
+
+====================================
+
+# 🛠️ Technology Stack
+
+Built with:
+
+- Python
+- SQLite
+- Pandas
+- Matplotlib
+
+Python concepts applied:
+
+- Object-Oriented Programming
+- Modular architecture
+- Database CRUD operations
+- Data analysis
+- Error handling
+- Function abstraction
+
+# 📂 Project Structure
+
 AI-Learning-Assistant
 
 │
 ├── main.py
-│
 ├── database.py
+├── learning.db
 │
 ├── models
-│   ├── activity.py
-│   ├── idea.py
-│   └── project.py
-│
-├── menus
-│   ├── activity_menu.py
-│   ├── idea_menu.py
-│   └── project_menu.py
+│ ├── activity.py
+│ ├── project.py
+│ └── goal.py
 │
 ├── services
-│   ├── analyzer.py
-│   └── intelligence.py
+│ ├── analyzer.py
+│ ├── insight.py
+│ ├── decision_engine.py
+│ └── dashboard.py
 │
-└── learning.db
-```
+└── README.md
+
 
 ---
 
-# 🛠️ Technologies Used
+# 🎯 Future Improvements
 
-* Python
-* SQLite
-* Pandas
-* Git & GitHub
+Planned improvements:
 
----
-
-# ▶️ How To Run
-
-Clone repository:
-
-```bash
-git clone https://github.com/ubaidillah1996/alpa.git
-```
-
-Navigate into project:
-
-```bash
-cd alpa
-```
-
-Run application:
-
-```bash
-python main.py
-```
-
----
-
-# 📌 Development Roadmap
-
-## Completed
-
-✅ Activity Tracker
-✅ Idea Management
-✅ Project Tracker
-✅ Database Integration
-✅ Input Validation
-✅ Learning Analytics
-✅ Intelligence Layer v0.4.0
-
----
-
-## Future Improvements
-
-### v0.5 — Smart Decision Layer
-
-Planned features:
-
-* Productivity scoring
-* Project priority ranking
-* Learning streak tracking
-* Smarter recommendations
-* Improved decision support
+- AI-powered learning recommendations
+- Web dashboard interface
+- Better visualization
+- Learning statistics
+- Export reports
+- Cloud database support
 
 ---
 
 # 👨‍💻 Author
 
-Built as a continuous learning project while exploring:
+Built by Ubaidillah Abdullah
 
-* Python development
-* Software architecture
-* Data analysis
-* AI-assisted programming
+A personal project developed to improve learning consistency, project management, and software development skills.
 
 ---
 
-⭐ ALPA is continuously evolving from a simple tracker into a personal AI learning companion.
+# 📌 Version
 
-## Version History
+Current Version:
 
-### v0.8
-- Added project progress history tracking
-- Added project analytics
-- Track progress changes over time
-- Calculate project growth rate
+ALPA v1.0
+
+Status: Ready for daily personal use!
